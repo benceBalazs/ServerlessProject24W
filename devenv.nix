@@ -32,6 +32,8 @@ in
       python312Packages.pip                  # python package manager
       python312Packages.google-cloud-storage # google cloud storage
       python312Packages.google-cloud-pubsub  # google cloud pubsub
+      #service specific
+      python312Packages.pillow
   ];
 
   languages.python = {
