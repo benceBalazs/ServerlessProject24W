@@ -35,6 +35,10 @@ in
       # service specific
       python312Packages.pillow
       python312Packages.numpy
+
+      python312Packages.cloudevents
+      python312Packages.flask
+      python312Packages.deprecation
   ];
 
   languages.python = {
