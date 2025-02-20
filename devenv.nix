@@ -32,6 +32,11 @@ in
       python312Packages.pip                  # python package manager
       python312Packages.google-cloud-storage # google cloud storage
       python312Packages.google-cloud-pubsub  # google cloud pubsub
+      python312Packages.google-cloud-monitoring # google cloud monitoring
+      python312Packages.pandas
+      python312Packages.matplotlib
+      python312Packages.seaborn
+
       # service specific
       python312Packages.pillow
       python312Packages.numpy
@@ -39,6 +44,8 @@ in
       python312Packages.cloudevents
       python312Packages.flask
       python312Packages.deprecation
+
+      (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
   ];
 
   languages.python = {
