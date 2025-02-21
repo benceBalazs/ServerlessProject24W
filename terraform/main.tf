@@ -55,7 +55,7 @@ resource "google_cloudfunctions2_function" "input_handler" {
   location = var.region
 
   build_config {
-    runtime = "python310"
+    runtime = "python311"
     entry_point = "handle_upload"
     source {
       storage_source {
@@ -74,9 +74,41 @@ resource "google_cloudfunctions2_function" "input_handler" {
   event_trigger {
     trigger_region = var.region
     event_type = "google.cloud.storage.object.v1.finalized"
-    event_filters {
+    event_filters = [{
       attribute = "bucket"
       value = google_storage_bucket.input_bucket.name
-    }
+    }]
   }
 }
+
+resource "google_cloudfunctions2_function" "exif_processor" {
+  name = "exif-processor"
+  location = var.region
+
+  build_config {
+    runtime = "python311"
+    entry_point = "process_exif"
+    source {
+      storage_source {
+        bucket = google_storage_bucket.source_bucket.name
+        object = google_storage_bucket_object.input_handler_source.name
+      }
+    }
+  }
+
+  service_config {
+    max_instance_count = 100
+    available_memory   = "256M"
+    timeout_seconds    = 60
+  }
+
+  event_trigger {
+    trigger_region = var.region
+    event_type = "google.cloud.storage.object.v1.finalized"
+    event_filters = [{
+      attribute = "bucket"
+      value = google_storage_bucket.input_bucket.name
+    }]
+  }
+}
+
