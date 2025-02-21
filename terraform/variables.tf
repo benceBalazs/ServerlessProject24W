@@ -45,7 +45,7 @@ variable "pubsub_topics"{
     "input_handler" = "input-handler-topic"
     "metadata_extractor" = "metadata-extractor-topic"
     "exif_processor" = "exif-processor-topic"
-    "format_converter" = format-converter-topic
+    "format_converter" = "format-converter-topic"
     "thumbnail_generator" = "thumbnail-generator-topic"
     "rgb_channel_separator" = "rgb-channel-separator-topic"
     "metrics_visualizer" = "metrics-visualizer-topic"
