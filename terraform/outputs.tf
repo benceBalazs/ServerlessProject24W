@@ -1,12 +1,12 @@
 // Bucket definitions
 output "input_bucket_name" {
   description = "The name of the input bucket"
-  value = google_storage_bucket.input_bucket.name
+  value = data.google_storage_bucket.input_bucket.name
 }
 
 output "output_bucket_name" {
   description = "The name of the output bucket"
-  value = google_storage_bucket.output_bucket.name
+  value = data.google_storage_bucket.output_bucket.name
 }
 
 // Function definitions
@@ -19,6 +19,5 @@ output "function_urls" {
     format_converter = google_cloudfunctions2_function.format_converter.url
     rgb_channel_separator = google_cloudfunctions2_function.rgb_channel_separator.url
     thumbnail_generator = google_cloudfunctions2_function.thumbnail_generator.url
-    metrics_visualizer = google_cloudfunctions2_function.metrics_visualizer.url
   }
 }

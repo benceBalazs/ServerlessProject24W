@@ -14,13 +14,12 @@ variable "function_memory" {
   description = "Necessary Memory allocation for Cloud Functions"
   type = map(string)
   default = {
-    "input_handler" = "256MB"
-    "metadata_extractor" = "512MB"
-    "exif_processor" = "256MB"
-    "format_converter" = "1024B"
-    "thumbnail_generator" = "512MB"
-    "rgb_channel_separator" = "1024MB"
-    "metrics_visualizer" = "256MB"
+    "input_handler" = "256Mi"
+    "metadata_extractor" = "512Mi"
+    "exif_processor" = "256Mi"
+    "format_converter" = "1024Mi"
+    "thumbnail_generator" = "512Mi"
+    "rgb_channel_separator" = "1024Mi"
   }
 }
 
@@ -34,13 +33,12 @@ variable "function_timeout" {
     "format_converter" = 120
     "thumbnail_generator" = 120
     "rgb_channel_separator" = 120
-    "metrics_visualizer"  = 120
   }
 }
 
 variable "pubsub_topics"{
   description = "Pub/Sub topics for triggering functions"
-  type = map{string}
+  type = map(string)
   default = {
     "input_handler" = "input-handler-topic"
     "metadata_extractor" = "metadata-extractor-topic"
