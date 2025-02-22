@@ -12,13 +12,15 @@ def convert_format(cloud_event):
     # receive cloud_event
     message = base64.b64decode(cloud_event.data["message"]["data"]).decode("utf-8")
     data = json.loads(message)
-    bucket_name = data["bucket"]
+    input_bucket_name = data["input_bucket"]
+    output_bucket_name = data["output_bucket"]
     file_name = data["file_name"]
 
     # retrieve storage and file data
     storage_client = storage.Client()
-    bucket = storage_client.bucket(bucket_name)
-    blob = bucket.blob(file_name)
+    input_bucket = storage_client.bucket(input_bucket_name)
+    output_bucket = storage_client.bucket(output_bucket_name)
+    blob = input_bucket.blob(file_name)
     
     # download image
     image_data = blob.download_as_bytes()
@@ -35,7 +37,7 @@ def convert_format(cloud_event):
             
             # generate new filename
             new_filename = f"converted/{file_name.rsplit('.', 1)[0]}.{format_name.lower()}"
-            new_blob = bucket.blob(new_filename)
+            new_blob = output_bucket.blob(new_filename)
             
             # upload converted image
             new_blob.upload_from_file(
@@ -47,7 +49,7 @@ def convert_format(cloud_event):
 
     # update metadata with conversion information
     try:
-        metadata_blob = bucket.blob(f"metadata/{file_name}.json")
+        metadata_blob = output_bucket.blob(f"metadata/{file_name}.json")
         if metadata_blob.exists():
             metadata = json.loads(metadata_blob.download_as_string())
             metadata['converted_formats'] = converted_urls

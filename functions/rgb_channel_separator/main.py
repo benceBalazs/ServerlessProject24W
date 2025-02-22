@@ -4,19 +4,22 @@ from PIL import Image
 import numpy as np
 import json
 import io
+import base64
 
 @functions_framework.cloud_event
 def separate_rgb_channels(cloud_event):
     # receive cloud_event
     message = base64.b64decode(cloud_event.data["message"]["data"]).decode("utf-8")
     data = json.loads(message)
-    bucket_name = data["bucket"]
+    input_bucket_name = data["input_bucket"]
+    output_bucket_name = data["output_bucket"]
     file_name = data["file_name"]
 
     # retrieve storage data
     storage_client = storage.Client()
-    bucket = storage_client.bucket(bucket_name)
-    blob = bucket.blob(file_name)
+    input_bucket = storage_client.bucket(input_bucket_name)
+    output_bucket = storage_client.bucket(output_bucket_name)
+    blob = input_bucket.blob(file_name)
     
     # download image
     image_data = blob.download_as_bytes()
@@ -48,7 +51,7 @@ def separate_rgb_channels(cloud_event):
         output_buffer.seek(0)
         
         # upload to bucket
-        channel_blob = bucket.blob(channel_filename)
+        channel_blob = output_bucket.blob(channel_filename)
         channel_blob.upload_from_file(
             output_buffer,
             content_type='image/png'
@@ -58,7 +61,7 @@ def separate_rgb_channels(cloud_event):
 
     # update metadata with channel information
     try:
-        metadata_blob = bucket.blob(f"metadata/{file_name}.json")
+        metadata_blob = output_bucket.blob(f"metadata/{file_name}.json")
         if metadata_blob.exists():
             metadata = json.loads(metadata_blob.download_as_string())
             metadata['rgb_channels'] = channel_urls

@@ -6,20 +6,27 @@ import io
 import base64
 
 project_id = "serverless-project-24W"
-topic_path = f"projects/{project_id}/topics/process-exif"
+topics = {
+    "thumbnail": f"projects/{project_id}/topics/generate-thumbnail",
+    "format": f"projects/{project_id}/topics/convert-format",
+    "rgb": f"projects/{project_id}/topics/separate-rgb-channels",
+    "exif": f"projects/{project_id}/topics/process-exif"
+}
 
 @functions_framework.cloud_event
 def extract_metadata(cloud_event):
     # receive cloud_event
     message = base64.b64decode(cloud_event.data["message"]["data"]).decode("utf-8")
     data = json.loads(message)
-    bucket_name = data["bucket"]
+    input_bucket_name = data["input_bucket"]
+    output_bucket_name = data["output_bucket"]
     file_name = data["file_name"]
 
     # retrieve storage and file data
     storage_client = storage.Client()
-    bucket = storage_client.bucket(bucket_name)
-    blob = bucket.blob(file_name)
+    input_bucket = storage_client.bucket(input_bucket_name)
+    output_bucket = storage_client.bucket(output_bucket_name)
+    blob = input_bucket.blob(file_name)
     
     # download image
     image_data = blob.download_as_bytes()
@@ -37,7 +44,7 @@ def extract_metadata(cloud_event):
     }
     
     # store metadata
-    metadata_blob = bucket.blob(f"metadata/{file_name}.json")
+    metadata_blob = output_bucket.blob(f"metadata/{file_name}.json")
     metadata_blob.upload_from_string(
         json.dumps(metadata),
         content_type='application/json'
@@ -45,11 +52,15 @@ def extract_metadata(cloud_event):
 
     # invoke EXIF processing
     publisher = pubsub_v1.PublisherClient()
+    # write to json
     message_data = json.dumps({
-        "bucket": bucket_name,
-        "file_name": file_name,
-        "metadata_path": f"metadata/{file_name}.json"
+        "input_bucket": input_bucket_name,
+        "output_bucket": output_bucket_name,
+        "file_name": file_name
     }).encode("utf-8")
-    publisher.publish(topic_path, message_data)
+
+    # publish events
+    for topic_path in topics.values():
+        publisher.publish(topic_path, message_data)
 
     return "Metadata extracted", 200

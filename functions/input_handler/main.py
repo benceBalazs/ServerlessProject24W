@@ -6,23 +6,20 @@ publisher = pubsub_v1.PublisherClient()
 storage_client = storage.Client()
 project_id = "serverless-project-24W"
 topics = {
-    "metadata": f"projects/{project_id}/topics/extract-metadata",
-    "thumbnail": f"projects/{project_id}/topics/generate-thumbnail",
-    "format": f"projects/{project_id}/topics/convert-format",
-    "rgb": f"projects/{project_id}/topics/separate-rgb-channels"
+    "metadata": f"projects/{project_id}/topics/extract-metadata"
 }
 
 @functions_framework.cloud_event
 def handle_upload(cloud_event):
-    message = base64.b64decode(cloud_event.data["message"]["data"]).decode("utf-8")
-    data = json.loads(message)
+    data = cloud_event.data
 
     # file name exists 
     if "name" not in data:
         return "No file name provided", 400
 
     file_name = data["name"]
-    bucket_name = data["bucket"]
+    input_bucket_name = data["bucket"]
+    output_bucket_name = "serverless-project-24w-output"
 
     # file has allowed format    
     if not (file_name.lower().endswith(('.jpg', '.jpeg', '.png'))):
@@ -30,7 +27,8 @@ def handle_upload(cloud_event):
     
     # write to json
     message_data = json.dumps({
-        "bucket": bucket_name,
+        "input_bucket": input_bucket_name,
+        "output_bucket": output_bucket_name,
         "file_name": file_name
     }).encode("utf-8")
 
