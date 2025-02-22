@@ -24,8 +24,15 @@ data "google_storage_bucket" "output_bucket" {
   name = "${var.project_id}-output"
 }
 
+resource "google_project_iam_member" "gcs_pubsub_publisher" {
+  project = "serverless-project-24w"
+  role    = "roles/pubsub.publisher"
+  member  = "serviceAccount:service-180156150843@gs-project-accounts.iam.gserviceaccount.com"
+}
 
 // set up pub/sub topics for functions communication
+
+
 resource "google_pubsub_topic" "extract_metadata" {
   name = "extract-metadata"
 }
@@ -74,6 +81,7 @@ resource "google_cloudfunctions2_function" "input_handler" {
       value = data.google_storage_bucket.input_bucket.name
     }
   }
+  depends_on = [google_project_iam_member.gcs_pubsub_publisher]
 }
 resource "google_storage_bucket_object" "input_handler_source" {
   name   = "input_handler.zip"  
@@ -109,11 +117,13 @@ resource "google_cloudfunctions2_function" "exif_processor" {
       value = data.google_storage_bucket.input_bucket.name
     }
   }
+   depends_on = [google_project_iam_member.gcs_pubsub_publisher]
 }
 resource "google_storage_bucket_object" "exif_processor_source" {
   name   = "exif_processor.zip"  
   bucket = data.google_storage_bucket.input_bucket.name
   source = "G:/Desktop/ServerlessProject24W-main/functions/exif_processor.zip" 
+
 }
 
 #Format conversion 
@@ -144,6 +154,7 @@ resource "google_cloudfunctions2_function" "format_converter" {
       value = data.google_storage_bucket.input_bucket.name
     }
   }
+   depends_on = [google_project_iam_member.gcs_pubsub_publisher]
 }
 resource "google_storage_bucket_object" "format_converter_source" {
   name   = "exif_processor.zip"  
@@ -176,13 +187,10 @@ resource "google_cloudfunctions2_function" "metadata_extractor" {
   event_trigger {
     trigger_region = var.region
     event_type     = "google.cloud.pubsub.topic.v1.messagePublished"
-    event_filters {
-      attribute = "topic"
-      value     = google_pubsub_topic.extract_metadata.name
-    }
+    pubsub_topic = "projects/${var.project_id}/topics/${google_pubsub_topic.extract_metadata}"
   }
 
-  depends_on = [google_pubsub_topic.extract_metadata]
+   depends_on = [google_pubsub_topic.extract_metadata, google_project_iam_member.gcs_pubsub_publisher]
 }
 resource "google_storage_bucket_object" "metadata_extractor_source" {
   name   = "metadata_extractor.zip"  
@@ -221,7 +229,7 @@ resource "google_cloudfunctions2_function" "thumbnail_generator" {
     }
   }
 
-  depends_on = [google_pubsub_topic.generate_thumbnail]
+   depends_on = [google_project_iam_member.gcs_pubsub_publisher]
 }
 resource "google_storage_bucket_object" "thumbnail_generator_source" {
   name   = "thumbnail_generator.zip"  
@@ -260,7 +268,7 @@ resource "google_cloudfunctions2_function" "rgb_channel_separator" {
     }
   }
 
-  depends_on = [google_pubsub_topic.separate_rgb_channels]
+   depends_on = [google_project_iam_member.gcs_pubsub_publisher]
 }
 resource "google_storage_bucket_object" "rgb_channel_separator_source" {
   name   = "rgb_channel_separator.zip"  
