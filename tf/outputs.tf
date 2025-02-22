@@ -1,11 +1,11 @@
 output "input_bucket_name" {
   description = "The name of the input bucket"
-  value       = data.google_storage_bucket.input_bucket.name
+  value       = google_storage_bucket.input_bucket.name
 }
 
 output "output_bucket_name" {
   description = "The name of the output bucket"
-  value       = data.google_storage_bucket.output_bucket.name
+  value       = google_storage_bucket.output_bucket.name
 }
 
 output "function_urls" {
