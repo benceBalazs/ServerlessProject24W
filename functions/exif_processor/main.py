@@ -46,8 +46,7 @@ def process_exif(cloud_event):
     
     # update with EXIF data
     metadata['exif'] = exif_data
-    
-    # save updated metadata
+
     metadata_blob.upload_from_string(
         json.dumps(metadata),
         content_type='application/json'

@@ -36,7 +36,7 @@ def convert_format(cloud_event):
             output_buffer.seek(0)
             
             # generate new filename
-            new_filename = f"converted/{file_name.rsplit('.', 1)[0]}.{format_name.lower()}"
+            new_filename = f"converted/{file_name}/{file_name.rsplit('.', 1)[0]}.{format_name.lower()}"
             new_blob = output_bucket.blob(new_filename)
             
             # upload converted image
@@ -47,17 +47,13 @@ def convert_format(cloud_event):
             
             converted_urls[format_name.lower()] = new_filename
 
-    # update metadata with conversion information
-    try:
-        metadata_blob = output_bucket.blob(f"metadata/{file_name}.json")
-        if metadata_blob.exists():
-            metadata = json.loads(metadata_blob.download_as_string())
-            metadata['converted_formats'] = converted_urls
-            metadata_blob.upload_from_string(
-                json.dumps(metadata),
-                content_type='application/json'
-            )
-    except Exception as e:
-        print(f"Error updating metadata: {str(e)}")
+    metadata = {}
+    metadata['converted_formats'] = converted_urls
+    new_filename = f"converted/{file_name}/metadata.json"
+    new_blob = output_bucket.blob(new_filename)
+    new_blob.upload_from_file(
+        json.dumps(metadata),
+        content_type=f'image/{format_name.lower()}'
+    )
 
     return "Format conversion completed", 200

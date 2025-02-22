@@ -43,7 +43,7 @@ def separate_rgb_channels(cloud_event):
     
     for channel_name, channel_image in channels.items():
         # create filename for this channel
-        channel_filename = f"channels/{file_name.rsplit('.', 1)[0]}_{channel_name}.png"
+        channel_filename = f"channels/{file_name}/{file_name.rsplit('.', 1)[0]}_{channel_name}.png"
         
         # save to memory
         output_buffer = io.BytesIO()
@@ -59,17 +59,14 @@ def separate_rgb_channels(cloud_event):
         
         channel_urls[channel_name] = channel_filename
 
-    # update metadata with channel information
-    try:
-        metadata_blob = output_bucket.blob(f"metadata/{file_name}.json")
-        if metadata_blob.exists():
-            metadata = json.loads(metadata_blob.download_as_string())
-            metadata['rgb_channels'] = channel_urls
-            metadata_blob.upload_from_string(
-                json.dumps(metadata),
-                content_type='application/json'
-            )
-    except Exception as e:
-        print(f"Error updating metadata: {str(e)}")
+
+    metadata = {}
+    metadata['rgb_channels'] = channel_urls
+    new_filename = f"channels/{file_name}/metadata.json"
+    new_blob = output_bucket.blob(new_filename)
+    new_blob.upload_from_file(
+        json.dumps(metadata),
+        content_type='application/json'
+    )
 
     return "RGB channels separated", 200

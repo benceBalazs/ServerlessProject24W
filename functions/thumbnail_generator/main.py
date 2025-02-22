@@ -39,7 +39,7 @@ def generate_thumbnail(cloud_event):
         thumbnail_buffer.seek(0)
         
         # generate thumbnail filename
-        thumb_filename = f"thumbnails/{file_name.rsplit('.', 1)[0]}_{size[0]}x{size[1]}.{image.format.lower()}"
+        thumb_filename = f"thumbnails/{file_name}/{file_name.rsplit('.', 1)[0]}_{size[0]}x{size[1]}.{image.format.lower()}"
         
         # upload thumbnail
         thumbnail_blob = output_bucket.blob(thumb_filename)
@@ -50,17 +50,13 @@ def generate_thumbnail(cloud_event):
         
         thumbnail_urls[f"{size[0]}x{size[1]}"] = thumb_filename
 
-    # update metadata with thumbnail information
-    try:
-        metadata_blob = output_bucket.blob(f"metadata/{file_name}.json")
-        if metadata_blob.exists():
-            metadata = json.loads(metadata_blob.download_as_string())
-            metadata['thumbnails'] = thumbnail_urls
-            metadata_blob.upload_from_string(
-                json.dumps(metadata),
-                content_type='application/json'
-            )
-    except Exception as e:
-        print(f"Error updating metadata: {str(e)}")
+    metadata = {}
+    metadata['thumbnails'] = thumbnail_urls
+    new_filename = f"thumbnails/{file_name}/metadata.json"
+    new_blob = output_bucket.blob(new_filename)
+    new_blob.upload_from_file(
+        json.dumps(metadata),
+        content_type='application/json'
+    )
 
     return "Thumbnails generated", 200
