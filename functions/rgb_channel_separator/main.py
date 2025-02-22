@@ -64,7 +64,7 @@ def separate_rgb_channels(cloud_event):
     metadata['rgb_channels'] = channel_urls
     new_filename = f"channels/{file_name}/metadata.json"
     new_blob = output_bucket.blob(new_filename)
-    new_blob.upload_from_file(
+    new_blob.upload_from_string(
         json.dumps(metadata),
         content_type='application/json'
     )

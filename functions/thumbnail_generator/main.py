@@ -54,7 +54,7 @@ def generate_thumbnail(cloud_event):
     metadata['thumbnails'] = thumbnail_urls
     new_filename = f"thumbnails/{file_name}/metadata.json"
     new_blob = output_bucket.blob(new_filename)
-    new_blob.upload_from_file(
+    new_blob.upload_from_string(
         json.dumps(metadata),
         content_type='application/json'
     )

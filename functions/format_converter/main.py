@@ -51,9 +51,9 @@ def convert_format(cloud_event):
     metadata['converted_formats'] = converted_urls
     new_filename = f"converted/{file_name}/metadata.json"
     new_blob = output_bucket.blob(new_filename)
-    new_blob.upload_from_file(
+    new_blob.upload_from_string(
         json.dumps(metadata),
-        content_type=f'image/{format_name.lower()}'
+        content_type='application/json'
     )
 
     return "Format conversion completed", 200
