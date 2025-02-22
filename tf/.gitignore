@@ -1,0 +1,5 @@
+# from func_*.tf files
+zipped/
+
+*.tfplan
+*.tfstate*
