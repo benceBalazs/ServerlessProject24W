@@ -27,12 +27,14 @@ resource "google_cloudfunctions2_function" "rgb_channel_separator" {
 
   event_trigger {
     trigger_region = var.region
-    event_type     = "google.cloud.storage.object.v1.finalized"
-    event_filters {
-      attribute = "bucket"
-      value     = google_storage_bucket.input_bucket.name
-    }
+    event_type     = "google.cloud.pubsub.topic.v1.messagePublished"
+    pubsub_topic   = google_pubsub_topic.separate_rgb_channels.id
+    retry_policy   = "RETRY_POLICY_RETRY"
   }
 
-  depends_on = [google_project_iam_member.gcs_pubsub_publisher]
+  depends_on = [
+    google_project_iam_member.gcs_pubsub_publisher,
+    google_storage_bucket_object.rgb_channel_separator_source,
+    google_pubsub_topic.separate_rgb_channels
+  ]
 }

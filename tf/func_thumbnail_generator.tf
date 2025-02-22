@@ -27,12 +27,14 @@ resource "google_cloudfunctions2_function" "thumbnail_generator" {
 
   event_trigger {
     trigger_region = var.region
-    event_type     = "google.cloud.storage.object.v1.finalized"
-    event_filters {
-      attribute = "bucket"
-      value     = google_storage_bucket.input_bucket.name
-    }
+    event_type     = "google.cloud.pubsub.topic.v1.messagePublished"
+    pubsub_topic   = google_pubsub_topic.generate_thumbnail.id
+    retry_policy   = "RETRY_POLICY_RETRY"
   }
 
-  depends_on = [google_project_iam_member.gcs_pubsub_publisher]
+  depends_on = [
+    google_project_iam_member.gcs_pubsub_publisher,
+    google_storage_bucket_object.thumbnail_generator_source,
+    google_pubsub_topic.generate_thumbnail
+  ]
 }

@@ -34,5 +34,9 @@ resource "google_cloudfunctions2_function" "input_handler" {
     }
   }
 
-  depends_on = [google_project_iam_member.gcs_pubsub_publisher]
+  depends_on = [
+    google_project_iam_member.gcs_pubsub_publisher,
+    google_storage_bucket_object.input_handler_source,
+    google_storage_bucket.input_bucket
+  ]
 }
