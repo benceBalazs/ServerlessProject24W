@@ -33,7 +33,7 @@ resource "google_cloudfunctions2_function" "thumbnail_generator" {
   }
 
   depends_on = [
-    google_project_iam_member.gcs_pubsub_publisher,
+    google_project_iam_member.function_sa_roles,
     google_storage_bucket_object.thumbnail_generator_source,
     google_pubsub_topic.generate_thumbnail
   ]

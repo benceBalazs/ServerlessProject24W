@@ -34,9 +34,24 @@ resource "google_cloudfunctions2_function" "input_handler" {
     }
   }
 
+  # event_trigger {
+  #   trigger_region = var.region
+  #   event_type     = "google.cloud.pubsub.topic.v1.messagePublished"
+  #   pubsub_topic   = google_pubsub_topic.input_bucket.id
+  #   retry_policy   = "RETRY_POLICY_RETRY"
+  # }
+
   depends_on = [
-    google_project_iam_member.gcs_pubsub_publisher,
-    google_storage_bucket_object.input_handler_source,
-    google_storage_bucket.input_bucket
+    google_pubsub_topic.input_bucket,
+    google_project_iam_member.function_sa_roles,
+    google_project_iam_member.storage_publisher,
   ]
+}
+
+resource "google_cloudfunctions2_function_iam_member" "invoker" {
+  project        = google_cloudfunctions2_function.input_handler.project
+  location       = google_cloudfunctions2_function.input_handler.location
+  cloud_function = google_cloudfunctions2_function.input_handler.name
+  role           = "roles/cloudfunctions.invoker"
+  member         = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
 }

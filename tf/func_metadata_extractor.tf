@@ -33,7 +33,7 @@ resource "google_cloudfunctions2_function" "metadata_extractor" {
   }
 
   depends_on = [
-    google_project_iam_member.gcs_pubsub_publisher,
+    google_project_iam_member.function_sa_roles,
     google_storage_bucket_object.metadata_extractor_source,
     google_pubsub_topic.extract_metadata
   ]
