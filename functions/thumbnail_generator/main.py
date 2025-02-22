@@ -9,7 +9,8 @@ thumbnail_sizes = [(200, 200), (400, 400)]
 @functions_framework.cloud_event
 def generate_thumbnail(cloud_event):
     # receive cloud_event
-    data = json.loads(cloud_event.data["message"]["data"])
+    message = base64.b64decode(cloud_event.data["message"]["data"]).decode("utf-8")
+    data = json.loads(message)
     bucket_name = data["bucket"]
     file_name = data["file_name"]
 

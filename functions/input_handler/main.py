@@ -14,7 +14,8 @@ topics = {
 
 @functions_framework.cloud_event
 def handle_upload(cloud_event):
-    data = cloud_event.data
+    message = base64.b64decode(cloud_event.data["message"]["data"]).decode("utf-8")
+    data = json.loads(message)
 
     # file name exists 
     if "name" not in data:

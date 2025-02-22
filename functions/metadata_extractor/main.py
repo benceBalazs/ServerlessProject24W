@@ -3,6 +3,7 @@ import functions_framework
 from PIL import Image
 import json
 import io
+import base64
 
 project_id = "serverless-project-24W"
 topic_path = f"projects/{project_id}/topics/process-exif"
@@ -10,7 +11,8 @@ topic_path = f"projects/{project_id}/topics/process-exif"
 @functions_framework.cloud_event
 def extract_metadata(cloud_event):
     # receive cloud_event
-    data = json.loads(cloud_event.data["message"]["data"])
+    message = base64.b64decode(cloud_event.data["message"]["data"]).decode("utf-8")
+    data = json.loads(message)
     bucket_name = data["bucket"]
     file_name = data["file_name"]
 
@@ -31,7 +33,7 @@ def extract_metadata(cloud_event):
         "width": image.width,
         "height": image.height,
         "filename": file_name,
-        "timestamp": cloud_event.time,
+        "timestamp": cloud_event.get_attributes()["time"],
     }
     
     # store metadata
