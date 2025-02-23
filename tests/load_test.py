@@ -14,7 +14,7 @@ class ImageProcessorLoadTest:
         self.project_id = project_id
         self.input_bucket = input_bucket
         self.output_bucket = output_bucket
-        self.storage_client = storage.Client()
+        self.storage_client = storage.Client(project=project_id)
         self.test_images = self._load_test_images(test_images_dir)
         self.results = []
 
