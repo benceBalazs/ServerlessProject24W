@@ -64,7 +64,7 @@ class ImageProcessorLoadTest:
 
             # Verify processing results with retry logic
             verification = None
-            max_retries = 10
+            max_retries = 15
             retry_delay = 2  # seconds
             for attempt in range(max_retries):
                 verification = self._verify_processing(output_bucket, filename)

@@ -9,7 +9,7 @@ import pandas as pd
 from defs import *
 
 
-COLLECTION_WINDOW_MINUTES = 11
+COLLECTION_WINDOW_MINUTES = 14
 
 client = monitoring_v3.MetricServiceClient()
 interval = monitoring_v3.TimeInterval(
