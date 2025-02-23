@@ -67,7 +67,7 @@ class ImageProcessorLoadTest:
                 print(f"Verification failed, retrying... (Attempt {attempt + 1}/{max_retries})")
                 time.sleep(retry_delay)
             else:
-                print("Max retries reached. Verification incomplete.")
+                print("Max retries reached. Verification partially incomplete.")
 
             end_time = time.time()
 
@@ -104,12 +104,12 @@ class ImageProcessorLoadTest:
         if metadata_blob.exists():
             verification['metadata'] = True
 
-            if channels_blob.exists():
-                if channels_blob['thumbnails']:
+            if thumbnail_blob.exists():
+                if thumbnail_blob['thumbnails']:
                         verification['thumbnails'] = True
 
-            if thumbnail_blob.exists():
-                if thumbnail_blob['rgb_channels']:
+            if channels_blob.exists():
+                if channels_blob['rgb_channels']:
                         verification['rgb_channels'] = True
 
             if converted_blob.exists():
