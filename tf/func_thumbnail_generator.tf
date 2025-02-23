@@ -33,10 +33,10 @@ resource "google_cloudfunctions2_function" "thumbnail_generator" {
   }
 
   service_config {
-    max_instance_count = local.function_config.thumbnail_generator.max_instance_count
-    min_instance_count = local.function_config.thumbnail_generator.min_instance_count
-    available_memory   = local.function_config.thumbnail_generator.available_memory
-    timeout_seconds    = local.function_config.thumbnail_generator.timeout_seconds
+    max_instance_count = var.function_service_config.thumbnail_generator.max_instance_count
+    min_instance_count = var.function_service_config.thumbnail_generator.min_instance_count
+    available_memory   = var.function_service_config.thumbnail_generator.available_memory
+    timeout_seconds    = var.function_service_config.thumbnail_generator.timeout_seconds
   }
 
   depends_on = [
