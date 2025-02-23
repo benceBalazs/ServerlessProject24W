@@ -14,7 +14,6 @@ def process_exif(cloud_event):
     input_bucket_name = data["input_bucket"]
     output_bucket_name = data["output_bucket"]
     file_name = data["file_name"]
-    metadata_path = data["metadata_path"]
 
     # retrieve storage and file data
     storage_client = storage.Client()
@@ -41,7 +40,7 @@ def process_exif(cloud_event):
                 exif_data[f"error_{tag_id}"] = str(e)
 
     # read existing metadata
-    metadata_blob = output_bucket.blob(metadata_path)
+    metadata_blob = output_bucket.blob(f"metadata/{file_name}.json")
     metadata = json.loads(metadata_blob.download_as_string())
     
     # update with EXIF data
