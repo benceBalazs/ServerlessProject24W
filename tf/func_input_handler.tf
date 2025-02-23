@@ -34,6 +34,12 @@ resource "google_cloudfunctions2_function" "input_handler" {
     }
   }
 
+  service_config {
+    max_instance_count = local.function_config.input_handler.max_instance_count
+    min_instance_count = local.function_config.input_handler.min_instance_count
+    available_memory   = local.function_config.input_handler.available_memory
+    timeout_seconds    = local.function_config.input_handler.timeout_seconds
+  }
 
   depends_on = [
     google_pubsub_topic.input_bucket,

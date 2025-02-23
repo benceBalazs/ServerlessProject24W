@@ -32,6 +32,13 @@ resource "google_cloudfunctions2_function" "format_converter" {
     retry_policy   = "RETRY_POLICY_RETRY"
   }
 
+  service_config {
+    max_instance_count = local.function_config.format_converter.max_instance_count
+    min_instance_count = local.function_config.format_converter.min_instance_count
+    available_memory   = local.function_config.format_converter.available_memory
+    timeout_seconds    = local.function_config.format_converter.timeout_seconds
+  }
+
   depends_on = [
     google_project_iam_member.function_sa_roles,
     google_storage_bucket_object.format_converter_source,

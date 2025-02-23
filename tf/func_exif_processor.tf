@@ -32,6 +32,13 @@ resource "google_cloudfunctions2_function" "exif_processor" {
     retry_policy   = "RETRY_POLICY_RETRY"
   }
 
+  service_config {
+    max_instance_count = local.function_config.exif_processor.max_instance_count
+    min_instance_count = local.function_config.exif_processor.min_instance_count
+    available_memory   = local.function_config.exif_processor.available_memory
+    timeout_seconds    = local.function_config.exif_processor.timeout_seconds
+  }
+
   depends_on = [
     google_project_iam_member.function_sa_roles,
     google_storage_bucket_object.exif_processor_source,
