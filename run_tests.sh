@@ -2,7 +2,7 @@
 
 set -e -x -u -o pipefail
 
-SANITY_SLEEP=20s
+SANITY_SLEEP=60s
 
 function run_scenario() {
     SCEANRIO=$1
@@ -13,8 +13,8 @@ function run_scenario() {
 
     mkdir -p $RESULTDIR
 
-    terraform -chdir=tf plan -out=$TF_CONFIG.tfplan -var-file=./configs/$TF_CONFIG.tfvars
-    terraform -chdir=tf apply $TF_CONFIG.tfplan
+    terraform -chdir=tf plan -out=$TF_CONFIG.tfplan -var-file=./configs/$TF_CONFIG.tfvars >$RESULTDIR/terraform_plan.log
+    terraform -chdir=tf apply $TF_CONFIG.tfplan >$RESULTDIR/terraform_apply.log
 
     sleep $SANITY_SLEEP
 
@@ -23,18 +23,15 @@ function run_scenario() {
     popd
 
     sleep $SANITY_SLEEP
+    sleep $SANITY_SLEEP
 
     pushd metrics
-    RESULTDIR=$RESULTDIR python main.py >$RESULTDIR/metrics.log
+    RESULTDIR=$RESULTDIR python fetch_data.py >$RESULTDIR/fetch_data.log
+    RESULTDIR=$RESULTDIR python create_plots.py >$RESULTDIR/create_plots.log
     popd
 
-    sleep $SANITY_SLEEP
+    # sleep $SANITY_SLEEP
 }
-
-# |        	   | low | mid | high |
-# | ---------- | --- | --- | ---- |
-# | simple 	   | S1  | S2  | S3   |
-# | production | S4  | S5  | S6   |
 
 run_scenario 1 simple low
 run_scenario 2 simple mid
