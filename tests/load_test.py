@@ -7,7 +7,13 @@ import os
 from datetime import datetime
 import json
 
-# python load_test.py --project-id your-project-id --input-bucket your-bucket-name --output-bucket your-bucket-name --test-images-dir path/to/test/images
+PROJECT_ID = "serverless-project-24w"
+INPUT_BUCKET = "serverless-project-24w-input"
+OUTPUT_BUCKET = "serverless-project-24w-output"
+TEST_IMAGES_DIR = "test_images"
+
+LOAD_TEST_VARIANT=os.getenv("LOAD_TEST_VARIANT", "simple")
+
 
 class ImageProcessorLoadTest:
     def __init__(self, project_id, input_bucket, output_bucket, test_images_dir):
@@ -133,19 +139,8 @@ class ImageProcessorLoadTest:
 
 
 def main():
-    import argparse
-
-    parser = argparse.ArgumentParser(description='Run load tests for image processor')
-    parser.add_argument('--project-id', required=True, help='Google Cloud Project ID')
-    parser.add_argument('--input-bucket', required=True, help='Input bucket name')
-    parser.add_argument('--output-bucket', required=True, help='Output bucket name')
-    parser.add_argument('--test-images-dir', required=True, help='Directory containing test images')
-    parser.add_argument('--scenario', required=True, help='Load Test Scenario')
-
-    args = parser.parse_args()
-
     production_test_scenarios = [
-        {'concurrent': 1, 'duration': 60},  # Baseline
+        {'concurrent': 1, 'duration': 60},    # Baseline
         {'concurrent': 10, 'duration': 100},  # Medium load
         {'concurrent': 100, 'duration': 10},  # Stress test
     ]
@@ -154,18 +149,19 @@ def main():
         {'concurrent': 1, 'duration': 10},  # simple
     ]
 
-    selected_scenarios = simple_test_scenarios
-
-    if args.scenario == "production":
+    selected_scenarios = [] 
+    if LOAD_TEST_VARIANT == "production":
         selected_scenarios = production_test_scenarios
-    elif args.scenario == "simple":
+    elif LOAD_TEST_VARIANT == "simple":
         selected_scenarios = simple_test_scenarios
+    else:
+        raise ValueError(f"Invalid LOAD_TEST_VARIANT {scenario}. Use 'production' or 'simple'.")
 
     tester = ImageProcessorLoadTest(
-        project_id=args.project_id,
-        input_bucket=args.input_bucket,
-        output_bucket=args.output_bucket,
-        test_images_dir=args.test_images_dir,
+        project_id=PROJECT_ID,
+        input_bucket=INPUT_BUCKET,
+        output_bucket=OUTPUT_BUCKET,
+        test_images_dir=TEST_IMAGES_DIR
     )
 
     for scenario in selected_scenarios:

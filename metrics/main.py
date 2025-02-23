@@ -1,10 +1,12 @@
 import csv
+import os
 import subprocess
 import time
 
 from datetime import datetime, timedelta, UTC
 from google.cloud import monitoring_v3
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 PROJECT_ID = "serverless-project-24w"
@@ -18,9 +20,10 @@ FUNCTION_NAMES = [
     "thumbnail-generator",
 ]
 
-COLLECTION_WINDOW_MINUTES = 30
-COLLECTION_SLACK_MINUTES = 2
+OUTPUTDIR = os.getenv("RESULTDIR", "./")
 
+COLLECTION_WINDOW_MINUTES = int(float(os.getenv("COLLECTION_WINDOW_MINUTES", 10)))
+COLLECTION_SLACK_MINUTES = 2
 
 METRICS = {
     "execution_times": {
@@ -87,7 +90,7 @@ def collect_metric(client, metric_config, start_time, end_time):
 
 def save_metrics_to_csv(metrics_data):
     for metric_name, data in metrics_data.items():
-        pd.DataFrame(data).to_csv(f"{metric_name}.csv", index=False)
+        pd.DataFrame(data).to_csv(f"{OUTPUTDIR}{metric_name}.csv", index=False)
 
 
 def plot_execution_times(df):
@@ -96,20 +99,27 @@ def plot_execution_times(df):
         return
 
     plt.figure(figsize=(10, 6))
+
+    # Calculate appropriate number of bins based on data size
     for function_name in df["function"].unique():
         function_data = df[df["function"] == function_name]
+        n_points = len(function_data)
+        # Use Sturges' rule or minimum of 5 bins
+        n_bins = min(30, max(5, int(1 + 3.322 * np.log10(n_points))))
+
         plt.hist(
             function_data["execution_time"],
-            bins=30,
+            bins=n_bins,
             alpha=0.5,
             label=function_name,
         )
+
     plt.title("Distribution of Execution Times")
     plt.xlabel("Execution Time (nanoseconds)")
     plt.ylabel("Frequency")
     plt.legend()
     plt.tight_layout()
-    plt.savefig("execution_times.png")
+    plt.savefig(OUTPUTDIR + "execution_times.png")
     plt.close()
 
 
@@ -119,20 +129,27 @@ def plot_memory_usage(df):
         return
 
     plt.figure(figsize=(10, 6))
+
+    # Calculate appropriate number of bins based on data size
     for function_name in df["function"].unique():
         function_data = df[df["function"] == function_name]
+        n_points = len(function_data)
+        # Use Sturges' rule or minimum of 5 bins
+        n_bins = min(30, max(5, int(1 + 3.322 * np.log10(n_points))))
+
         plt.hist(
             function_data["memory_bytes"],
-            bins=30,
+            bins=n_bins,
             alpha=0.5,
             label=function_name,
         )
+
     plt.title("Memory Usage Distribution")
     plt.xlabel("Memory Usage (bytes)")
     plt.ylabel("Frequency")
     plt.legend()
     plt.tight_layout()
-    plt.savefig("memory_usage.png")
+    plt.savefig(OUTPUTDIR + "memory_usage.png")
     plt.close()
 
 
@@ -169,7 +186,7 @@ def plot_active_instances(df):
     plt.grid(True, linestyle="--", alpha=0.7)
     plt.legend()
     plt.tight_layout()
-    plt.savefig("active_instances.png")
+    plt.savefig(OUTPUTDIR + "active_instances.png")
     plt.close()
 
 
@@ -206,7 +223,7 @@ def plot_execution_count(df):
     plt.grid(True, linestyle="--", alpha=0.7)
     plt.legend()
     plt.tight_layout()
-    plt.savefig("execution_count.png")
+    plt.savefig(OUTPUTDIR + "execution_count.png")
     plt.close()
 
 
