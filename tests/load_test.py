@@ -140,19 +140,26 @@ def main():
     parser.add_argument('--input-bucket', required=True, help='Input bucket name')
     parser.add_argument('--output-bucket', required=True, help='Output bucket name')
     parser.add_argument('--test-images-dir', required=True, help='Directory containing test images')
+    parser.add_argument('--scenario', required=True, help='Load Test Scenario')
 
     args = parser.parse_args()
 
-    default_test_scenarios = [
+    production_test_scenarios = [
         {'concurrent': 1, 'duration': 60},  # Baseline
-        {'concurrent': 10, 'duration': 120},  # Medium load
-        {'concurrent': 50, 'duration': 180},  # High load
-        {'concurrent': 100, 'duration': 300},  # Stress test
+        {'concurrent': 10, 'duration': 100},  # Medium load
+        {'concurrent': 100, 'duration': 10},  # Stress test
     ]
 
     simple_test_scenarios = [
-        {'concurrent': 10, 'duration': 120},  # Baseline
+        {'concurrent': 1, 'duration': 10},  # simple
     ]
+
+    selected_scenarios = simple_test_scenarios
+
+    if args.scenario == "production":
+        selected_scenarios = production_test_scenarios
+    elif args.scenario == "simple":
+        selected_scenarios = simple_test_scenarios
 
     tester = ImageProcessorLoadTest(
         project_id=args.project_id,
@@ -161,7 +168,7 @@ def main():
         test_images_dir=args.test_images_dir,
     )
 
-    for scenario in simple_test_scenarios:
+    for scenario in selected_scenarios:
         print(f"\nRunning test with {scenario['concurrent']} concurrent uploads...")
         print(f"Duration: {scenario['duration']} seconds")
         tester.run_test(scenario['concurrent'], scenario['duration'])
