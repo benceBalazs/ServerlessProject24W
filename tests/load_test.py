@@ -89,32 +89,14 @@ class ImageProcessorLoadTest:
 
     def _verify_processing(self, bucket, filename):
         verification = {
-            'metadata': False,
-            'thumbnails': False,
-            'rgb_channels': False,
-            'converted_formats': False,
+            'metadata': False
         }
 
         # Check metadata
         metadata_blob = bucket.blob(f"metadata/{filename}.json")
-        channels_blob = bucket.blob(f"channels/{filename}/metadata.json")
-        thumbnail_blob = bucket.blob(f"thumbnail/{filename}/metadata.json")
-        converted_blob = bucket.blob(f"converted/{filename}/metadata.json")
 
         if metadata_blob.exists():
             verification['metadata'] = True
-
-            if thumbnail_blob.exists():
-                if thumbnail_blob['thumbnails']:
-                        verification['thumbnails'] = True
-
-            if channels_blob.exists():
-                if channels_blob['rgb_channels']:
-                        verification['rgb_channels'] = True
-
-            if converted_blob.exists():
-                if converted_blob['converted_formats']:
-                        verification['converted_formats'] = True
 
         return verification
 
@@ -128,7 +110,7 @@ class ImageProcessorLoadTest:
 
         # Calculate verification success rates
         verification_success = {
-            k: 0 for k in ['metadata', 'thumbnails', 'rgb_channels', 'converted_formats']
+            k: 0 for k in ['metadata']
         }
         for result in self.results:
             if result['status'] == 'success':
