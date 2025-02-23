@@ -33,10 +33,10 @@ resource "google_cloudfunctions2_function" "exif_processor" {
   }
 
   service_config {
-    max_instance_count = local.function_config.exif_processor.max_instance_count
-    min_instance_count = local.function_config.exif_processor.min_instance_count
-    available_memory   = local.function_config.exif_processor.available_memory
-    timeout_seconds    = local.function_config.exif_processor.timeout_seconds
+    max_instance_count = var.function_service_config.exif_processor.max_instance_count
+    min_instance_count = var.function_service_config.exif_processor.min_instance_count
+    available_memory   = var.function_service_config.exif_processor.available_memory
+    timeout_seconds    = var.function_service_config.exif_processor.timeout_seconds
   }
 
   depends_on = [

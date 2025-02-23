@@ -33,10 +33,10 @@ resource "google_cloudfunctions2_function" "metadata_extractor" {
   }
 
   service_config {
-    max_instance_count = local.function_config.metadata_extractor.max_instance_count
-    min_instance_count = local.function_config.metadata_extractor.min_instance_count
-    available_memory   = local.function_config.metadata_extractor.available_memory
-    timeout_seconds    = local.function_config.metadata_extractor.timeout_seconds
+    max_instance_count = var.function_service_config.metadata_extractor.max_instance_count
+    min_instance_count = var.function_service_config.metadata_extractor.min_instance_count
+    available_memory   = var.function_service_config.metadata_extractor.available_memory
+    timeout_seconds    = var.function_service_config.metadata_extractor.timeout_seconds
   }
 
   depends_on = [
