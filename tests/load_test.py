@@ -10,9 +10,10 @@ import json
 # python load_test.py --project-id your-project-id --input-bucket your-bucket-name --test-images-dir path/to/test/images
 
 class ImageProcessorLoadTest:
-    def __init__(self, project_id, input_bucket, test_images_dir):
+    def __init__(self, project_id, input_bucket, output_bucket, test_images_dir):
         self.project_id = project_id
         self.input_bucket = input_bucket
+        self.output_bucket = output_bucket
         self.storage_client = storage.Client()
         self.test_images = self._load_test_images(test_images_dir)
         self.results = []
@@ -50,8 +51,9 @@ class ImageProcessorLoadTest:
 
         try:
             # Upload image
-            bucket = self.storage_client.bucket(self.input_bucket)
-            blob = bucket.blob(filename)
+            input_bucket = self.storage_client.bucket(self.input_bucket)
+            output_bucket = self.storage_client.bucket(self.output_bucket)
+            blob = input_bucket.blob(filename)
             blob.upload_from_string(image['data'], content_type='image/jpeg')
 
             # Verify processing results with retry logic
@@ -59,7 +61,7 @@ class ImageProcessorLoadTest:
             max_retries = 10
             retry_delay = 2  # seconds
             for attempt in range(max_retries):
-                verification = self._verify_processing(bucket, filename)
+                verification = self._verify_processing(output_bucket, filename)
                 if all(verification.values()):  # Check if all verifications are True
                     break
                 print(f"Verification failed, retrying... (Attempt {attempt + 1}/{max_retries})")
@@ -154,9 +156,8 @@ def main():
     parser = argparse.ArgumentParser(description='Run load tests for image processor')
     parser.add_argument('--project-id', required=True, help='Google Cloud Project ID')
     parser.add_argument('--input-bucket', required=True, help='Input bucket name')
-    parser.add_argument(
-        '--test-images-dir', required=True, help='Directory containing test images'
-    )
+    parser.add_argument('--output-bucket', required=True, help='Output bucket name')
+    parser.add_argument('--test-images-dir', required=True, help='Directory containing test images')
 
     args = parser.parse_args()
 
@@ -170,6 +171,7 @@ def main():
     tester = ImageProcessorLoadTest(
         project_id=args.project_id,
         input_bucket=args.input_bucket,
+        output_bucket=args.output_bucket,
         test_images_dir=args.test_images_dir,
     )
 
