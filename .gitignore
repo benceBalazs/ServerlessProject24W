@@ -10,3 +10,5 @@ devenv.local.nix
 
 # python
 __pycache__/
+
+.terraform/

@@ -3,3 +3,4 @@ zipped/
 
 *.tfplan
 *.tfstate*
+tfplan

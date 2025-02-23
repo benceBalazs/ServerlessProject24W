@@ -34,33 +34,6 @@ resource "google_project_iam_member" "storage_publisher" {
   member  = "serviceAccount:service-${data.google_project.project.number}@gs-project-accounts.iam.gserviceaccount.com"
 }
 
-# resource "google_eventarc_trigger" "input_handler_trigger" {
-#   name     = "input-handler-trigger"
-#   location = var.region
-
-#   matching_criteria {
-#     attribute = "bucket"
-#     value     = google_storage_bucket.input_bucket.name
-#   }
-
-#   matching_criteria {
-#     attribute = "type"
-#     value     = "google.cloud.storage.object.v1.finalized"
-#   }
-
-#   destination {
-#     cloud_function = google_cloudfunctions2_function.input_handler.name
-#   }
-
-#   transport {
-#     pubsub {
-#       topic = google_pubsub_topic.input_bucket.name
-#     }
-#   }
-
-#   depends_on = [google_project_iam_member.function_sa_roles]
-# }
-
 # Buckets
 
 resource "google_storage_bucket" "function_source_bucket" {
