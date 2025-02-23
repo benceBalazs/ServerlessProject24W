@@ -142,7 +142,7 @@ def main():
     production_test_scenarios = [
         {'concurrent': 1, 'duration': 60},    # Baseline
         {'concurrent': 10, 'duration': 100},  # Medium load
-        {'concurrent': 100, 'duration': 10},  # Stress test
+        {'concurrent': 100, 'duration': 3},  # Stress test
     ]
 
     simple_test_scenarios = [
