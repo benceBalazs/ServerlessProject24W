@@ -7,7 +7,7 @@ import os
 from datetime import datetime
 import json
 
-# python load_test.py --project-id your-project-id --input-bucket your-bucket-name --test-images-dir path/to/test/images
+# python load_test.py --project-id your-project-id --input-bucket your-bucket-name --output-bucket your-bucket-name --test-images-dir path/to/test/images
 
 class ImageProcessorLoadTest:
     def __init__(self, project_id, input_bucket, output_bucket, test_images_dir):
