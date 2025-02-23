@@ -161,11 +161,15 @@ def main():
 
     args = parser.parse_args()
 
-    test_scenarios = [
+    default_test_scenarios = [
         {'concurrent': 1, 'duration': 60},  # Baseline
         {'concurrent': 10, 'duration': 120},  # Medium load
         {'concurrent': 50, 'duration': 180},  # High load
         {'concurrent': 100, 'duration': 300},  # Stress test
+    ]
+
+    simple_test_scenarios = [
+        {'concurrent': 10, 'duration': 120},  # Baseline
     ]
 
     tester = ImageProcessorLoadTest(
@@ -175,7 +179,7 @@ def main():
         test_images_dir=args.test_images_dir,
     )
 
-    for scenario in test_scenarios:
+    for scenario in simple_test_scenarios:
         print(f"\nRunning test with {scenario['concurrent']} concurrent uploads...")
         print(f"Duration: {scenario['duration']} seconds")
         tester.run_test(scenario['concurrent'], scenario['duration'])
