@@ -95,21 +95,24 @@ class ImageProcessorLoadTest:
 
         # Check metadata
         metadata_blob = bucket.blob(f"metadata/{filename}.json")
+        channels_blob = bucket.blob(f"channels/{filename}/metadata.json")
+        thumbnail_blob = bucket.blob(f"thumbnail/{filename}/metadata.json")
+        converted_blob = bucket.blob(f"converted/{filename}/metadata.json")
+
         if metadata_blob.exists():
             verification['metadata'] = True
-            metadata = json.loads(metadata_blob.download_as_string())
 
-            # Check thumbnails
-            if metadata['thumbnails']:
-                verification['thumbnails'] = True
+            if channels_blob.exists():
+                if channels_blob['thumbnails']:
+                        verification['thumbnails'] = True
 
-            # Check RGB channels
-            if metadata['rgb_channels']:
-                verification['rgb_channels'] = True
+            if thumbnail_blob.exists():
+                if thumbnail_blob['rgb_channels']:
+                        verification['rgb_channels'] = True
 
-            # Check converted formats
-            if metadata['converted_formats']:
-                verification['converted_formats'] = True
+            if converted_blob.exists():
+                if converted_blob['converted_formats']:
+                        verification['converted_formats'] = True
 
         return verification
 
