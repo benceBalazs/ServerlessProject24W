@@ -1,0 +1,206 @@
+[0m[1mdata.archive_file.metadata_extractor: Reading...[0m[0m
+[0m[1mdata.archive_file.exif_processor: Reading...[0m[0m
+[0m[1mdata.archive_file.rgb_channel_separator: Reading...[0m[0m
+[0m[1mdata.archive_file.format_converter: Reading...[0m[0m
+[0m[1mdata.archive_file.thumbnail_generator: Reading...[0m[0m
+[0m[1mdata.archive_file.input_handler: Reading...[0m[0m
+[0m[1mdata.archive_file.exif_processor: Read complete after 0s [id=ebe1e0250666ff4671817a1fa28c66ba1fe2357b][0m
+[0m[1mdata.archive_file.format_converter: Read complete after 0s [id=f9902d6d6a305e7a4e7f8c0b083eee5a6045dca4][0m
+[0m[1mdata.archive_file.metadata_extractor: Read complete after 0s [id=8db3aa4f0e9b23910f05747499b3e2fae6aff1d6][0m
+[0m[1mdata.archive_file.thumbnail_generator: Read complete after 0s [id=935da9c72889bc3d29bcc5eb8c63bbcf42a18693][0m
+[0m[1mdata.archive_file.rgb_channel_separator: Read complete after 0s [id=694a2e5d628f2af0cb40058d21f48328c4ca6567][0m
+[0m[1mdata.archive_file.input_handler: Read complete after 0s [id=40ab62db073bfd507f1668d269127c622a9b1620][0m
+[0m[1mgoogle_pubsub_topic.process_exif: Refreshing state... [id=projects/serverless-project-24w/topics/process-exif][0m
+[0m[1mgoogle_pubsub_topic.extract_metadata: Refreshing state... [id=projects/serverless-project-24w/topics/extract-metadata][0m
+[0m[1mgoogle_pubsub_topic.generate_thumbnail: Refreshing state... [id=projects/serverless-project-24w/topics/generate-thumbnail][0m
+[0m[1mgoogle_pubsub_topic.separate_rgb_channels: Refreshing state... [id=projects/serverless-project-24w/topics/separate-rgb-channels][0m
+[0m[1mgoogle_pubsub_topic.convert_format: Refreshing state... [id=projects/serverless-project-24w/topics/convert-format][0m
+[0m[1mdata.google_project.project: Reading...[0m[0m
+[0m[1mgoogle_pubsub_topic.input_bucket: Refreshing state... [id=projects/serverless-project-24w/topics/input-bucket][0m
+[0m[1mgoogle_storage_bucket.output_bucket: Refreshing state... [id=serverless-project-24w-output][0m
+[0m[1mgoogle_storage_bucket.function_source_bucket: Refreshing state... [id=serverless-project-24w-functions][0m
+[0m[1mgoogle_storage_bucket.input_bucket: Refreshing state... [id=serverless-project-24w-input][0m
+[0m[1mgoogle_storage_bucket_object.metadata_extractor_source: Refreshing state... [id=serverless-project-24w-functions-metadata_extractor.zip][0m
+[0m[1mgoogle_storage_bucket_object.format_converter_source: Refreshing state... [id=serverless-project-24w-functions-format_converter.zip][0m
+[0m[1mgoogle_storage_bucket_object.exif_processor_source: Refreshing state... [id=serverless-project-24w-functions-exif_processor.zip][0m
+[0m[1mgoogle_storage_bucket_object.thumbnail_generator_source: Refreshing state... [id=serverless-project-24w-functions-thumbnail_generator.zip][0m
+[0m[1mgoogle_storage_bucket_object.rgb_channel_separator_source: Refreshing state... [id=serverless-project-24w-functions-rgb_channel_separator.zip][0m
+[0m[1mgoogle_storage_bucket_object.input_handler_source: Refreshing state... [id=serverless-project-24w-functions-input_handler.zip][0m
+[0m[1mdata.google_project.project: Read complete after 2s [id=projects/serverless-project-24w][0m
+[0m[1mgoogle_project_iam_member.storage_publisher: Refreshing state... [id=serverless-project-24w/roles/pubsub.publisher/serviceAccount:service-180156150843@gs-project-accounts.iam.gserviceaccount.com][0m
+[0m[1mgoogle_project_iam_member.function_sa_roles["roles/storage.objectViewer"]: Refreshing state... [id=serverless-project-24w/roles/storage.objectViewer/serviceAccount:180156150843-compute@developer.gserviceaccount.com][0m
+[0m[1mgoogle_project_iam_member.function_sa_roles["roles/cloudfunctions.invoker"]: Refreshing state... [id=serverless-project-24w/roles/cloudfunctions.invoker/serviceAccount:180156150843-compute@developer.gserviceaccount.com][0m
+[0m[1mgoogle_project_iam_member.function_sa_roles["roles/pubsub.publisher"]: Refreshing state... [id=serverless-project-24w/roles/pubsub.publisher/serviceAccount:180156150843-compute@developer.gserviceaccount.com][0m
+[0m[1mgoogle_project_iam_member.function_sa_roles["roles/eventarc.eventReceiver"]: Refreshing state... [id=serverless-project-24w/roles/eventarc.eventReceiver/serviceAccount:180156150843-compute@developer.gserviceaccount.com][0m
+[0m[1mgoogle_project_iam_member.function_sa_roles["roles/pubsub.editor"]: Refreshing state... [id=serverless-project-24w/roles/pubsub.editor/serviceAccount:180156150843-compute@developer.gserviceaccount.com][0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Refreshing state... [id=projects/serverless-project-24w/locations/europe-west1/functions/exif-processor][0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Refreshing state... [id=projects/serverless-project-24w/locations/europe-west1/functions/metadata-extractor][0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Refreshing state... [id=projects/serverless-project-24w/locations/europe-west1/functions/thumbnail-generator][0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Refreshing state... [id=projects/serverless-project-24w/locations/europe-west1/functions/format-converter][0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Refreshing state... [id=projects/serverless-project-24w/locations/europe-west1/functions/rgb-channel-separator][0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Refreshing state... [id=projects/serverless-project-24w/locations/europe-west1/functions/input-handler][0m
+[0m[1mgoogle_cloudfunctions2_function_iam_member.invoker: Refreshing state... [id=projects/serverless-project-24w/locations/europe-west1/functions/input-handler/roles/cloudfunctions.invoker/serviceAccount:180156150843-compute@developer.gserviceaccount.com][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [33m~[0m update in-place[0m
+
+Terraform will perform the following actions:
+
+[1m  # google_cloudfunctions2_function.exif_processor[0m will be updated in-place
+[0m  [33m~[0m[0m resource "google_cloudfunctions2_function" "exif_processor" {
+        id           = "projects/serverless-project-24w/locations/europe-west1/functions/exif-processor"
+        name         = "exif-processor"
+        [90m# (9 unchanged attributes hidden)[0m[0m
+
+      [33m~[0m[0m build_config {
+          [31m-[0m[0m docker_repository     = "projects/serverless-project-24w/locations/europe-west1/repositories/gcf-artifacts" [90m-> null[0m[0m
+            [90m# (5 unchanged attributes hidden)[0m[0m
+
+            [90m# (1 unchanged block hidden)[0m[0m
+        }
+
+      [33m~[0m[0m service_config {
+          [33m~[0m[0m available_memory                 = "256Mi" [33m->[0m[0m "512Mi"
+          [33m~[0m[0m environment_variables            = {
+              [31m-[0m[0m "LOG_EXECUTION_ID" = "true" [90m-> null[0m[0m
+            }
+            [90m# (13 unchanged attributes hidden)[0m[0m
+        }
+
+        [90m# (1 unchanged block hidden)[0m[0m
+    }
+
+[1m  # google_cloudfunctions2_function.format_converter[0m will be updated in-place
+[0m  [33m~[0m[0m resource "google_cloudfunctions2_function" "format_converter" {
+        id           = "projects/serverless-project-24w/locations/europe-west1/functions/format-converter"
+        name         = "format-converter"
+        [90m# (9 unchanged attributes hidden)[0m[0m
+
+      [33m~[0m[0m build_config {
+          [31m-[0m[0m docker_repository     = "projects/serverless-project-24w/locations/europe-west1/repositories/gcf-artifacts" [90m-> null[0m[0m
+            [90m# (5 unchanged attributes hidden)[0m[0m
+
+            [90m# (1 unchanged block hidden)[0m[0m
+        }
+
+      [33m~[0m[0m service_config {
+          [33m~[0m[0m available_memory                 = "256Mi" [33m->[0m[0m "512Mi"
+          [33m~[0m[0m environment_variables            = {
+              [31m-[0m[0m "LOG_EXECUTION_ID" = "true" [90m-> null[0m[0m
+            }
+            [90m# (13 unchanged attributes hidden)[0m[0m
+        }
+
+        [90m# (1 unchanged block hidden)[0m[0m
+    }
+
+[1m  # google_cloudfunctions2_function.input_handler[0m will be updated in-place
+[0m  [33m~[0m[0m resource "google_cloudfunctions2_function" "input_handler" {
+        id           = "projects/serverless-project-24w/locations/europe-west1/functions/input-handler"
+        name         = "input-handler"
+        [90m# (9 unchanged attributes hidden)[0m[0m
+
+      [33m~[0m[0m build_config {
+          [31m-[0m[0m docker_repository     = "projects/serverless-project-24w/locations/europe-west1/repositories/gcf-artifacts" [90m-> null[0m[0m
+            [90m# (5 unchanged attributes hidden)[0m[0m
+
+            [90m# (1 unchanged block hidden)[0m[0m
+        }
+
+      [33m~[0m[0m event_trigger {
+          [31m-[0m[0m retry_policy          = "RETRY_POLICY_DO_NOT_RETRY" [90m-> null[0m[0m
+            [90m# (5 unchanged attributes hidden)[0m[0m
+
+            [90m# (1 unchanged block hidden)[0m[0m
+        }
+
+      [33m~[0m[0m service_config {
+          [33m~[0m[0m available_memory                 = "256Mi" [33m->[0m[0m "512Mi"
+          [33m~[0m[0m environment_variables            = {
+              [31m-[0m[0m "LOG_EXECUTION_ID" = "true" [90m-> null[0m[0m
+            }
+            [90m# (13 unchanged attributes hidden)[0m[0m
+        }
+    }
+
+[1m  # google_cloudfunctions2_function.metadata_extractor[0m will be updated in-place
+[0m  [33m~[0m[0m resource "google_cloudfunctions2_function" "metadata_extractor" {
+        id           = "projects/serverless-project-24w/locations/europe-west1/functions/metadata-extractor"
+        name         = "metadata-extractor"
+        [90m# (9 unchanged attributes hidden)[0m[0m
+
+      [33m~[0m[0m build_config {
+          [31m-[0m[0m docker_repository     = "projects/serverless-project-24w/locations/europe-west1/repositories/gcf-artifacts" [90m-> null[0m[0m
+            [90m# (5 unchanged attributes hidden)[0m[0m
+
+            [90m# (1 unchanged block hidden)[0m[0m
+        }
+
+      [33m~[0m[0m service_config {
+          [33m~[0m[0m available_memory                 = "256Mi" [33m->[0m[0m "512Mi"
+          [33m~[0m[0m environment_variables            = {
+              [31m-[0m[0m "LOG_EXECUTION_ID" = "true" [90m-> null[0m[0m
+            }
+            [90m# (13 unchanged attributes hidden)[0m[0m
+        }
+
+        [90m# (1 unchanged block hidden)[0m[0m
+    }
+
+[1m  # google_cloudfunctions2_function.rgb_channel_separator[0m will be updated in-place
+[0m  [33m~[0m[0m resource "google_cloudfunctions2_function" "rgb_channel_separator" {
+        id           = "projects/serverless-project-24w/locations/europe-west1/functions/rgb-channel-separator"
+        name         = "rgb-channel-separator"
+        [90m# (9 unchanged attributes hidden)[0m[0m
+
+      [33m~[0m[0m build_config {
+          [31m-[0m[0m docker_repository     = "projects/serverless-project-24w/locations/europe-west1/repositories/gcf-artifacts" [90m-> null[0m[0m
+            [90m# (5 unchanged attributes hidden)[0m[0m
+
+            [90m# (1 unchanged block hidden)[0m[0m
+        }
+
+      [33m~[0m[0m service_config {
+          [33m~[0m[0m available_memory                 = "256Mi" [33m->[0m[0m "512Mi"
+          [33m~[0m[0m environment_variables            = {
+              [31m-[0m[0m "LOG_EXECUTION_ID" = "true" [90m-> null[0m[0m
+            }
+            [90m# (13 unchanged attributes hidden)[0m[0m
+        }
+
+        [90m# (1 unchanged block hidden)[0m[0m
+    }
+
+[1m  # google_cloudfunctions2_function.thumbnail_generator[0m will be updated in-place
+[0m  [33m~[0m[0m resource "google_cloudfunctions2_function" "thumbnail_generator" {
+        id           = "projects/serverless-project-24w/locations/europe-west1/functions/thumbnail-generator"
+        name         = "thumbnail-generator"
+        [90m# (9 unchanged attributes hidden)[0m[0m
+
+      [33m~[0m[0m build_config {
+          [31m-[0m[0m docker_repository     = "projects/serverless-project-24w/locations/europe-west1/repositories/gcf-artifacts" [90m-> null[0m[0m
+            [90m# (5 unchanged attributes hidden)[0m[0m
+
+            [90m# (1 unchanged block hidden)[0m[0m
+        }
+
+      [33m~[0m[0m service_config {
+          [33m~[0m[0m available_memory                 = "256Mi" [33m->[0m[0m "512Mi"
+          [33m~[0m[0m environment_variables            = {
+              [31m-[0m[0m "LOG_EXECUTION_ID" = "true" [90m-> null[0m[0m
+            }
+            [90m# (13 unchanged attributes hidden)[0m[0m
+        }
+
+        [90m# (1 unchanged block hidden)[0m[0m
+    }
+
+[1mPlan:[0m 0 to add, 6 to change, 0 to destroy.
+[0m[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Saved the plan to: high.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "high.tfplan"

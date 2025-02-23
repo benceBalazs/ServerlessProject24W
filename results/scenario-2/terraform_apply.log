@@ -1,0 +1,59 @@
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/metadata-extractor][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/format-converter][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/exif-processor][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/rgb-channel-separator][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/thumbnail-generator][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/input-handler][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still modifying... [id=projects/serverless-project-24w/locatio...ope-west1/functions/metadata-extractor, 10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still modifying... [id=projects/serverless-project-24w/locatio...urope-west1/functions/format-converter, 10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Still modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/exif-processor, 10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still modifying... [id=projects/serverless-project-24w/locatio...-west1/functions/rgb-channel-separator, 10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Still modifying... [id=projects/serverless-project-24w/locatio...pe-west1/functions/thumbnail-generator, 10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Still modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/input-handler, 10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still modifying... [id=projects/serverless-project-24w/locatio...ope-west1/functions/metadata-extractor, 20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still modifying... [id=projects/serverless-project-24w/locatio...urope-west1/functions/format-converter, 20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Still modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/exif-processor, 20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still modifying... [id=projects/serverless-project-24w/locatio...-west1/functions/rgb-channel-separator, 20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Still modifying... [id=projects/serverless-project-24w/locatio...pe-west1/functions/thumbnail-generator, 20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Still modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/input-handler, 20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still modifying... [id=projects/serverless-project-24w/locatio...ope-west1/functions/metadata-extractor, 30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still modifying... [id=projects/serverless-project-24w/locatio...urope-west1/functions/format-converter, 30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Still modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/exif-processor, 30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still modifying... [id=projects/serverless-project-24w/locatio...-west1/functions/rgb-channel-separator, 30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Still modifying... [id=projects/serverless-project-24w/locatio...pe-west1/functions/thumbnail-generator, 30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Still modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/input-handler, 30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still modifying... [id=projects/serverless-project-24w/locatio...ope-west1/functions/metadata-extractor, 40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still modifying... [id=projects/serverless-project-24w/locatio...urope-west1/functions/format-converter, 40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Still modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/exif-processor, 40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still modifying... [id=projects/serverless-project-24w/locatio...-west1/functions/rgb-channel-separator, 40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Still modifying... [id=projects/serverless-project-24w/locatio...pe-west1/functions/thumbnail-generator, 40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Still modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/input-handler, 40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still modifying... [id=projects/serverless-project-24w/locatio...ope-west1/functions/metadata-extractor, 50s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still modifying... [id=projects/serverless-project-24w/locatio...urope-west1/functions/format-converter, 50s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Still modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/exif-processor, 50s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still modifying... [id=projects/serverless-project-24w/locatio...-west1/functions/rgb-channel-separator, 50s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Still modifying... [id=projects/serverless-project-24w/locatio...pe-west1/functions/thumbnail-generator, 50s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Still modifying... [id=projects/serverless-project-24w/locations/europe-west1/functions/input-handler, 50s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Modifications complete after 52s [id=projects/serverless-project-24w/locations/europe-west1/functions/rgb-channel-separator][0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Modifications complete after 52s [id=projects/serverless-project-24w/locations/europe-west1/functions/format-converter][0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Modifications complete after 52s [id=projects/serverless-project-24w/locations/europe-west1/functions/input-handler][0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Modifications complete after 52s [id=projects/serverless-project-24w/locations/europe-west1/functions/exif-processor][0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Modifications complete after 52s [id=projects/serverless-project-24w/locations/europe-west1/functions/thumbnail-generator][0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still modifying... [id=projects/serverless-project-24w/locatio...ope-west1/functions/metadata-extractor, 1m0s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still modifying... [id=projects/serverless-project-24w/locatio...ope-west1/functions/metadata-extractor, 1m10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Modifications complete after 1m12s [id=projects/serverless-project-24w/locations/europe-west1/functions/metadata-extractor][0m
+[0m[1m[32m
+Apply complete! Resources: 0 added, 6 changed, 0 destroyed.
+[0m[0m[1m[32m
+Outputs:
+
+[0mfunction_urls = {
+  "exif_processor" = "https://europe-west1-serverless-project-24w.cloudfunctions.net/exif-processor"
+  "format_converter" = "https://europe-west1-serverless-project-24w.cloudfunctions.net/format-converter"
+  "input_handler" = "https://europe-west1-serverless-project-24w.cloudfunctions.net/input-handler"
+  "metadata_extractor" = "https://europe-west1-serverless-project-24w.cloudfunctions.net/metadata-extractor"
+  "rgb_channel_separator" = "https://europe-west1-serverless-project-24w.cloudfunctions.net/rgb-channel-separator"
+  "thumbnail_generator" = "https://europe-west1-serverless-project-24w.cloudfunctions.net/thumbnail-generator"
+}
+input_bucket_name = "serverless-project-24w-input"
+output_bucket_name = "serverless-project-24w-output"

@@ -1,0 +1,38 @@
+
+Running test with 5 concurrent uploads...
+Duration: 10 seconds
+Verification failed, retrying... (Attempt 1/15)
+Verification failed, retrying... (Attempt 1/15)
+Verification failed, retrying... (Attempt 1/15)
+Verification failed, retrying... (Attempt 1/15)
+Verification failed, retrying... (Attempt 1/15)
+Verification failed, retrying... (Attempt 2/15)
+Verification failed, retrying... (Attempt 2/15)
+Verification failed, retrying... (Attempt 2/15)
+Verification failed, retrying... (Attempt 2/15)
+Verification failed, retrying... (Attempt 2/15)
+Verification failed, retrying... (Attempt 3/15)
+Verification failed, retrying... (Attempt 3/15)
+Verification failed, retrying... (Attempt 3/15)
+Verification failed, retrying... (Attempt 3/15)
+Verification failed, retrying... (Attempt 3/15)
+Verification failed, retrying... (Attempt 4/15)
+Verification failed, retrying... (Attempt 4/15)
+Verification failed, retrying... (Attempt 4/15)
+Verification failed, retrying... (Attempt 4/15)
+Verification failed, retrying... (Attempt 5/15)
+Verification failed, retrying... (Attempt 5/15)
+Verification failed, retrying... (Attempt 5/15)
+Verification failed, retrying... (Attempt 5/15)
+Verification failed, retrying... (Attempt 6/15)
+Verification failed, retrying... (Attempt 6/15)
+Verification failed, retrying... (Attempt 6/15)
+
+Scenario Summary:
+Total uploads: 5
+Successful uploads: 5
+Failed uploads: 0
+Average duration: 11.26 seconds
+
+Verification rates:
+metadata: 100.0%

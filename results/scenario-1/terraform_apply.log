@@ -1,0 +1,110 @@
+[0m[1mgoogle_pubsub_topic.separate_rgb_channels: Creating...[0m[0m
+[0m[1mgoogle_pubsub_topic.extract_metadata: Creating...[0m[0m
+[0m[1mgoogle_pubsub_topic.input_bucket: Creating...[0m[0m
+[0m[1mgoogle_pubsub_topic.generate_thumbnail: Creating...[0m[0m
+[0m[1mgoogle_pubsub_topic.process_exif: Creating...[0m[0m
+[0m[1mgoogle_pubsub_topic.convert_format: Creating...[0m[0m
+[0m[1mgoogle_storage_bucket.function_source_bucket: Creating...[0m[0m
+[0m[1mgoogle_storage_bucket.input_bucket: Creating...[0m[0m
+[0m[1mgoogle_storage_bucket.output_bucket: Creating...[0m[0m
+[0m[1mgoogle_storage_bucket.function_source_bucket: Creation complete after 1s [id=serverless-project-24w-functions][0m
+[0m[1mgoogle_storage_bucket_object.metadata_extractor_source: Creating...[0m[0m
+[0m[1mgoogle_storage_bucket_object.format_converter_source: Creating...[0m[0m
+[0m[1mgoogle_storage_bucket.output_bucket: Creation complete after 2s [id=serverless-project-24w-output][0m
+[0m[1mgoogle_storage_bucket_object.exif_processor_source: Creating...[0m[0m
+[0m[1mgoogle_storage_bucket.input_bucket: Creation complete after 2s [id=serverless-project-24w-input][0m
+[0m[1mgoogle_storage_bucket_object.input_handler_source: Creating...[0m[0m
+[0m[1mgoogle_storage_bucket_object.format_converter_source: Creation complete after 1s [id=serverless-project-24w-functions-format_converter.zip][0m
+[0m[1mgoogle_storage_bucket_object.rgb_channel_separator_source: Creating...[0m[0m
+[0m[1mgoogle_storage_bucket_object.input_handler_source: Creation complete after 0s [id=serverless-project-24w-functions-input_handler.zip][0m
+[0m[1mgoogle_storage_bucket_object.metadata_extractor_source: Creation complete after 1s [id=serverless-project-24w-functions-metadata_extractor.zip][0m
+[0m[1mgoogle_storage_bucket_object.exif_processor_source: Creation complete after 0s [id=serverless-project-24w-functions-exif_processor.zip][0m
+[0m[1mgoogle_storage_bucket_object.thumbnail_generator_source: Creating...[0m[0m
+[0m[1mgoogle_storage_bucket_object.thumbnail_generator_source: Creation complete after 0s [id=serverless-project-24w-functions-thumbnail_generator.zip][0m
+[0m[1mgoogle_storage_bucket_object.rgb_channel_separator_source: Creation complete after 0s [id=serverless-project-24w-functions-rgb_channel_separator.zip][0m
+[0m[1mgoogle_pubsub_topic.extract_metadata: Creation complete after 5s [id=projects/serverless-project-24w/topics/extract-metadata][0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Creating...[0m[0m
+[0m[1mgoogle_pubsub_topic.separate_rgb_channels: Creation complete after 5s [id=projects/serverless-project-24w/topics/separate-rgb-channels][0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Creating...[0m[0m
+[0m[1mgoogle_pubsub_topic.input_bucket: Creation complete after 5s [id=projects/serverless-project-24w/topics/input-bucket][0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Creating...[0m[0m
+[0m[1mgoogle_pubsub_topic.process_exif: Creation complete after 6s [id=projects/serverless-project-24w/topics/process-exif][0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Creating...[0m[0m
+[0m[1mgoogle_pubsub_topic.generate_thumbnail: Creation complete after 6s [id=projects/serverless-project-24w/topics/generate-thumbnail][0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Creating...[0m[0m
+[0m[1mgoogle_pubsub_topic.convert_format: Creation complete after 8s [id=projects/serverless-project-24w/topics/convert-format][0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Creating...[0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still creating... [10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still creating... [10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Still creating... [10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Still creating... [10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Still creating... [10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still creating... [10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still creating... [20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still creating... [20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Still creating... [20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Still creating... [20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Still creating... [20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still creating... [20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still creating... [30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still creating... [30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Still creating... [30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Still creating... [30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Still creating... [30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still creating... [30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still creating... [40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still creating... [40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Still creating... [40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Still creating... [40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Still creating... [40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still creating... [40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still creating... [50s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still creating... [50s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Still creating... [50s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Still creating... [50s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Still creating... [50s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still creating... [50s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still creating... [1m0s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still creating... [1m0s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Still creating... [1m0s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Still creating... [1m0s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Still creating... [1m0s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still creating... [1m0s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Still creating... [1m10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still creating... [1m10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Still creating... [1m10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Still creating... [1m10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Still creating... [1m10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.metadata_extractor: Creation complete after 1m13s [id=projects/serverless-project-24w/locations/europe-west1/functions/metadata-extractor][0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still creating... [1m10s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.exif_processor: Creation complete after 1m12s [id=projects/serverless-project-24w/locations/europe-west1/functions/exif-processor][0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still creating... [1m20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Still creating... [1m20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Still creating... [1m20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.input_handler: Creation complete after 1m23s [id=projects/serverless-project-24w/locations/europe-west1/functions/input-handler][0m
+[0m[1mgoogle_cloudfunctions2_function_iam_member.invoker: Creating...[0m[0m
+[0m[1mgoogle_cloudfunctions2_function.thumbnail_generator: Creation complete after 1m22s [id=projects/serverless-project-24w/locations/europe-west1/functions/thumbnail-generator][0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still creating... [1m20s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function_iam_member.invoker: Creation complete after 5s [id=projects/serverless-project-24w/locations/europe-west1/functions/input-handler/roles/cloudfunctions.invoker/serviceAccount:180156150843-compute@developer.gserviceaccount.com][0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still creating... [1m30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still creating... [1m30s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Still creating... [1m40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still creating... [1m40s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.rgb_channel_separator: Creation complete after 1m43s [id=projects/serverless-project-24w/locations/europe-west1/functions/rgb-channel-separator][0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Still creating... [1m50s elapsed][0m[0m
+[0m[1mgoogle_cloudfunctions2_function.format_converter: Creation complete after 1m52s [id=projects/serverless-project-24w/locations/europe-west1/functions/format-converter][0m
+[0m[1m[32m
+Apply complete! Resources: 22 added, 0 changed, 0 destroyed.
+[0m[0m[1m[32m
+Outputs:
+
+[0mfunction_urls = {
+  "exif_processor" = "https://europe-west1-serverless-project-24w.cloudfunctions.net/exif-processor"
+  "format_converter" = "https://europe-west1-serverless-project-24w.cloudfunctions.net/format-converter"
+  "input_handler" = "https://europe-west1-serverless-project-24w.cloudfunctions.net/input-handler"
+  "metadata_extractor" = "https://europe-west1-serverless-project-24w.cloudfunctions.net/metadata-extractor"
+  "rgb_channel_separator" = "https://europe-west1-serverless-project-24w.cloudfunctions.net/rgb-channel-separator"
+  "thumbnail_generator" = "https://europe-west1-serverless-project-24w.cloudfunctions.net/thumbnail-generator"
+}
+input_bucket_name = "serverless-project-24w-input"
+output_bucket_name = "serverless-project-24w-output"
